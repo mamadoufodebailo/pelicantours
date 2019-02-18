@@ -1,17 +1,51 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="default">
+    <ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img style="height: 80px;width: auto" src="{{logo}}">
+          </ion-col>
+          <ion-col>
+            <span text-wrap="" style="color: #488aff">{{nom}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+  <ion-slides *ngIf="images?.slides && images?.slides.length" pager="" autoplay="2000" loop="true" pager>
+    <ion-slide *ngFor="let image of images.slides">
+      <img src="{{image.photo}}" class="cadre">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-fab top left>
+    <button ion-fab>Services</button>
+    <ion-fab-list>
+      <button ion-fab="" color="light" (click)="onPresentation()">
+        <img src="assets/imgs/presenter.ico">
+      </button>
+      <button ion-fab="" color="light" (click)="onPelerinage()">
+        <img src="assets/imgs/mecque.ico">
+      </button>
+      <button ion-fab="" color="light" (click)="onService()">
+        <img src="assets/imgs/service.ico">
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-fab top right>
+    <button ion-fab>Réserver</button>
+    <ion-fab-list>
+      <button ion-fab="" color="light" (click)="onReserver()"><ion-icon name="plane"></ion-icon></button>
+      <button ion-fab="" color="light" (click)="onTransport()"><ion-icon name="car"></ion-icon></button>
+      <button ion-fab="" color="light" (click)="onAssurance()"><img src="assets/imgs/icone-assurance.jpg"></button>
+      <button ion-fab="" color="light" (click)="onHotel()"><img src="assets/imgs/hotel.jpg"></button>
+    </ion-fab-list>
+  </ion-fab>
+
 </ion-content>

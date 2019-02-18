@@ -1,0 +1,63 @@
+<!--
+  Generated template for the HotelPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Réservation d'hotel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (submit)="onHotel(f.value)">
+    <ion-item>
+      <ion-label>Type d'hebergement</ion-label>
+      <ion-select name="type" [(ngModel)]="hotel.type" required="required">
+        <ion-option value="Chambre">Chambre seule</ion-option>
+        <ion-option value="Demi_pension">Demi-pension</ion-option>
+        <ion-option value="Pension">Pension complete</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date d'arrivée</ion-label>
+      <ion-input type="date" required="required" name="date_arrivee" [(ngModel)]="hotel.date_arrivee"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre de adulte</ion-label>
+      <ion-input pattern="^[0-9]{1,2}$" required="required" name="adulte" [(ngModel)]="hotel.adulte"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre de nuit</ion-label>
+      <ion-input pattern="^[0-9]{1,2}$" required="required" name="nombre_nuit" [(ngModel)]="hotel.nombre_nuit"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prénom et nom</ion-label>
+      <ion-input required="required" name="prenom_nom" [(ngModel)]="hotel.prenom_nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Téléphone</ion-label>
+      <ion-input pattern="^[0-9]{9}$" required="required" name="telephone" [(ngModel)]="hotel.telephone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Adresse</ion-label>
+      <ion-textarea ion-row="10" ion-col="15" required="required" name="adresse"
+                    [(ngModel)]="hotel.adresse"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input name="email" pattern="^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\.[a-z]{2,4}$"
+                 required="required" [(ngModel)]="hotel.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <p style="color:red"> {{message}} </p>
+    </ion-item>
+    <ion-item>
+      <button block="" ion-button="" [disabled]="!f.valid" type="submit">Envoyer</button>
+    </ion-item>
+  </form>
+</ion-content>
